@@ -1,0 +1,50 @@
+{
+	"background": [
+		"city1",
+		"city2",
+		"city3",
+		"city4",
+		"city5"
+	],
+
+	"startPosition": {
+		"x":220,
+		"y":270
+	},
+
+	"walls": [
+		{"width":150,"height":1,"x":0,"y":450,"collision":1},
+		{"width":1,"height":7,"x":480,"y":128,"collision":1},
+		{"width":25,"height":1,"x":800,"y":418,"collision":1},
+		{"width":23,"height":1,"x":832,"y":386,"collision":1},
+		{"width":21,"height":1,"x":864,"y":354,"collision":1},
+		{"width":19,"height":1,"x":896,"y":322,"collision":1},
+		{"width":17,"height":1,"x":928,"y":290,"collision":1},
+		{"width":1,"height":7,"x":3000,"y":64,"collision":1},
+		{"width":1,"height":5,"x":4500,"y":192,"collision":1}
+	],
+	
+	"enemies": [
+		{"x":480, "y":144, "facing":4, "type":"BulletTurret"},
+		{"x":480, "y":208, "facing":4, "type":"BulletTurret"},
+		{"x":480, "y":272, "facing":4, "type":"BulletTurret"},
+		{"x":480, "y":336, "facing":4, "type":"BulletTurret"},
+		{"x":1472, "y":232, "facing":4, "type":"Walker"},
+		{"x":1400, "y":232, "facing":4, "type":"Walker"},
+		{"x":1200, "y":232, "facing":6, "type":"Walker"},
+		{"x":1100, "y":232, "facing":6, "type":"Walker"},
+		{"x":3000, "y":80, "facing":4, "type":"BulletTurret"},
+		{"x":3000, "y":144, "facing":4, "type":"BulletTurret"},
+		{"x":3000, "y":208, "facing":4, "type":"BulletTurret"},
+		{"x":3000, "y":272, "facing":4, "type":"BulletTurret"},
+		{"x":3900, "y":232, "facing":4, "type":"Walker"},
+		{"x":4000, "y":232, "facing":4, "type":"Walker"},
+		{"x":4200, "y":232, "facing":4, "type":"Walker"},
+		{"x":4400, "y":232, "facing":4, "type":"Walker"},
+		{"x":4532, "y":208, "facing":6, "type":"LaserTurret"},
+		{"x":4532, "y":272, "facing":6, "type":"LaserTurret"},
+		{"x":4532, "y":336, "facing":6, "type":"LaserTurret"}
+	],
+
+	"endGoal":{"x":4600}
+}

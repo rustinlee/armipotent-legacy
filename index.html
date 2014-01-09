@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>Armipotent HTML5 Alpha</title>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="http://code.createjs.com/createjs-2013.09.25.min.js"></script>
+		<script src="js/lib/ndgmr.Collision.min.js"></script>
+		<script src="js/lib/howler.min.js"></script>
+
+		<script src="js/jquery.hotkeys.js"></script>
+
+		<script src="js/utils.js">></script>
+		<script src="js/input.js">></script>
+
+		<script src="js/collision.js">></script>
+
+		<script src="js/entity.js">></script>
+		<script src="js/creature.js">></script>
+
+		<script src="js/player.js">></script>
+
+		<script src="js/projectile.js">></script>
+
+		<script src="js/enemy.js">></script>
+
+		<script src="js/graphics.js">></script>
+		<script src="js/hud.js">></script>
+
+		<script src="js/level.js">></script>
+
+		<script src="js/main.js">></script>
+
+		<style>
+			body{
+				background-color: black;
+			}
+			#canvas {
+			    width: 800px;
+			    height: 600px;
+			    background-color: black;
+
+			    border-style: solid;
+				border-width: 1px;
+				border-color: white;
+
+			    position: absolute;
+			    top:0;
+			    bottom: 0;
+			    left: 0;
+			    right: 0;
+
+			    margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="canvas"></div>
+		<script type="text/javascript">
+			var CANVAS_WIDTH 	= 800;
+			var CANVAS_HEIGHT 	= 600;
+
+			var canvasElement = $("<canvas id='gameStage' width='" + CANVAS_WIDTH + "' height='" + CANVAS_HEIGHT + "'></canvas>");
+			var canvas = canvasElement.get(0).getContext("2d");
+			canvasElement.appendTo('#canvas');
+
+			var stage = new createjs.Stage("gameStage");
+
+			$('#canvas').mousemove(function(e) {
+			    var pos = findPos(this);
+			    currentMousePos.x = e.pageX - pos.x;
+			    currentMousePos.y = e.pageY - pos.y;
+			});
+		</script>
+		</body>
+</html>
