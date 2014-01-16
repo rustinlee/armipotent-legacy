@@ -55,7 +55,7 @@ function initConfigs(){
 						tempAngle = angle - this.levels[this.level-1].projectileSpread/2 + (this.levels[this.level-1].projectileSpread/(this.levels[this.level-1].projectileCount-1)) * i;
 						projectiles.push(new Projectile(player.x + player.width/2, player.y + player.height/2, Math.cos(tempAngle*Math.PI/180)*this.levels[this.level-1].firePower, Math.sin(tempAngle*Math.PI/180)*this.levels[this.level-1].firePower, sprite, this.levels[this.level-1].damage, true));
 						world.addChild(projectiles[projectiles.length-1].sprite);
-					};	
+					}
 				} else {
 					projectiles.push(new Projectile(player.x + player.width/2, player.y + player.height/2, Math.cos(angle*Math.PI/180)*this.levels[this.level-1].firePower, Math.sin(angle*Math.PI/180)*this.levels[this.level-1].firePower, this.levels[this.level-1].projectileSpriteSheets[0], this.levels[this.level-1].damage, true));
 					world.addChild(projectiles[projectiles.length-1].sprite);
@@ -66,7 +66,7 @@ function initConfigs(){
 		step: function() {
 			//will rotate player's arms once we get the proper art
 		}
-	}
+	};
 
 	fistConfig = {
 		level: 1,
@@ -137,7 +137,7 @@ function initConfigs(){
 
 			this.container.rotation = angle;		
 		}
-	}
+	};
 
 	cannonConfig = {
 		level: 1,
@@ -207,7 +207,7 @@ function initConfigs(){
 
 			this.container.rotation = angle;		
 		}		
-	}
+	};
 }
 
 function PlayerClass(x, y, maxHP, sprite) {
@@ -253,7 +253,7 @@ function PlayerClass(x, y, maxHP, sprite) {
 		1: cannonConfig,
 		2: throwingWeaponConfig,
 		3: fistConfig
-	}
+	};
 	this.die = function() {
 		this.x = this.checkpointX;
 		this.y = this.checkpointY;

@@ -15,13 +15,13 @@ var parallax = {
 				if(offScreenRight){
 					this.images[i].children[ii].x = this.images[i].children[ii].x - (this.images[i].children.length*this.images[i].children[ii].image.width);
 				}
-			};
-		};
+			}
+		}
 	}
-}
+};
 
 function updateCamera() {
-	if(player.xv == 0){
+	if(player.xv === 0){
 		framesSinceMoved++;
 	} else {
 		framesSinceMoved = 0;
@@ -29,8 +29,10 @@ function updateCamera() {
 
 	var distance = Math.round(world.x);
 
+	var targetPos;
+
 	if(framesSinceMoved >= centerOnPlayerDelay){
-		var targetPos = ((player.x+player.width/2)-(CANVAS_WIDTH*0.5))*-1;
+		targetPos = ((player.x+player.width/2)-(CANVAS_WIDTH*0.5))*-1;
 		if(world.x > targetPos) {
 			world.x -= (world.x-targetPos)*0.05;
 		}
@@ -42,14 +44,14 @@ function updateCamera() {
 		var panSpeedY = 0;
 		switch(player.facing){
 			case 4:
-				var targetPos = ((player.x+player.width/2)-(CANVAS_WIDTH*0.6))*-1;
+				targetPos = ((player.x+player.width/2)-(CANVAS_WIDTH*0.6))*-1;
 				world.x += panSpeedX;
 				if(world.x > targetPos) {
 					world.x = targetPos;
 				}
 				break;
 			case 6:
-				var targetPos = ((player.x+player.width/2)-(CANVAS_WIDTH*0.4))*-1;
+				targetPos = ((player.x+player.width/2)-(CANVAS_WIDTH*0.4))*-1;
 				world.x -= panSpeedX;
 				if(world.x < targetPos) {
 					world.x = targetPos;

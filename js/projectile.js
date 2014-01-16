@@ -93,5 +93,5 @@ function Laser(x, y, length, width, color, angle) {
 		if(this.ttl <= 0) {
 			this.alive = false;
 		}
-	}
+	};
 }

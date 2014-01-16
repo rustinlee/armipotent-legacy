@@ -15,32 +15,33 @@ function initLevel(data) {
 			var imageToAdd = image.clone();
 			imageToAdd.x = ii*imageToAdd.image.width;
 			container.addChild(imageToAdd);
-		};
+		}
 
 		parallax.images.push(container);
-	};
+	}
 
 	for (var i = 0; i < parallax.images.length; i++) {
 		stage.addChild(parallax.images[i]);
-	};
+	}
 
 	walls = data.walls;
 	for (var i = walls.length - 1; i >= 0; i--) {
 		var container = new createjs.Container();
+		var spriteToAdd;
 		for (var ii = walls[i].width - 1; ii >= 0; ii--) {
-			var spriteToAdd = new createjs.Sprite(wallSprites);
+			spriteToAdd = new createjs.Sprite(wallSprites);
 			spriteToAdd.gotoAndStop(Math.floor(Math.random()*3));
 			spriteToAdd.x = ii * 32;
 			container.addChild(spriteToAdd);
 
-			var spriteToAdd = new createjs.Sprite(wallSprites);
+			spriteToAdd = new createjs.Sprite(wallSprites);
 			spriteToAdd.gotoAndStop(Math.floor(Math.random()*5)+8);
 			spriteToAdd.x = ii * 32;
 			spriteToAdd.y = walls[i].height * 32;
 			container.addChild(spriteToAdd);
 		}
 		for (var ii = walls[i].height - 1; ii >= 0; ii--) {
-			var spriteToAdd = new createjs.Sprite(wallSprites);
+			spriteToAdd = new createjs.Sprite(wallSprites);
 			spriteToAdd.gotoAndStop(Math.floor(Math.random()*3));
 			spriteToAdd.y = ii * 32;
 			container.addChild(spriteToAdd);

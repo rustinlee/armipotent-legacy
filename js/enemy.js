@@ -3,7 +3,7 @@ function Walker(x, y, facing){
 	this.y = y;
 	this.xv = 0;
 	this.yv = 0;
-	this.sprite = new createjs.Container;
+	this.sprite = new createjs.Container();
 	this.base = new createjs.Sprite(walkerBaseSheet, "run");
 	this.gun = new createjs.Sprite(walkerGunSheet, "idle");
 	if(facing == 6){
@@ -38,7 +38,7 @@ function Walker(x, y, facing){
 		this.projectileSprite.gotoAndPlay("flying");
 		projectiles.push(new Projectile(this.x + this.width/2, this.y - this.gun.spriteSheet._frameHeight/2, this.firePower, 0, this.projectileSprite, 15, false));
 		world.addChild(projectiles[projectiles.length-1].sprite);
-	}
+	};
 	this.AI = function(){
 		if(facing == 4){
 			this.xv -= 2;
@@ -62,7 +62,7 @@ function Walker(x, y, facing){
 		if(this.gun.currentAnimation == "shoot" && Math.round(this.gun.currentAnimationFrame*10)/10 == 4){
 			this.fire();
 		}
-	}
+	};
 }
 
 Walker.prototype = new Creature();
@@ -199,7 +199,7 @@ function LaserTurret(x, y, facing){
 					collided = true;
 					break;
 				}
-			};
+			}
 
 			if(collided){
 				break;
@@ -209,7 +209,7 @@ function LaserTurret(x, y, facing){
 				player.HP -= this.damage;
 				break;
 			}
-		};
+		}
 
 		projectiles.push(new Laser(laserOriginX, laserOriginY, i, this.laserWidth, "#ff0000", angle));
 		world.addChild(projectiles[projectiles.length-1].sprite);
