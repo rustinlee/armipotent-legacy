@@ -10,6 +10,7 @@ function init() {
 	initConfigs();
 
 	world = new createjs.Container();
+	world.mouseEnabled = false;
 
 	initLevel(levels[level]);
 
