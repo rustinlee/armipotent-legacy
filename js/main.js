@@ -51,6 +51,13 @@ function step() {
 		hud.init();
 	}
 
+	var viewPort = {
+		x: -world.x,
+		y: world.y,
+		width: CANVAS_WIDTH,
+		height: CANVAS_HEIGHT
+	}
+
 	for (var i = projectiles.length - 1; i >= 0; i--) {
 		projectiles[i].step();
 		if(!projectiles[i].alive){
@@ -63,8 +70,10 @@ function step() {
 	});
 
 	for (var i = creatures.length - 1; i >= 0; i--) {
-		creatures[i].AI();
-		creatures[i].step();
+		if(checkAABB(creatures[i], viewPort)){
+			creatures[i].AI();
+			creatures[i].step();
+		}
 	}
 
 	creatures = creatures.filter(function(creature) {
