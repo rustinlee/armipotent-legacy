@@ -3,6 +3,13 @@ var friction = 1;
 
 var pitThreshold = Number.POSITIVE_INFINITY;
 
+var mainTree = new Quadtree({
+	x: 0,
+	y: 0,
+	width: 800,
+	height: 600
+})
+
 function init() {
 	levels = [level1, level2];
 	level = 0;
@@ -51,12 +58,38 @@ function step() {
 		hud.init();
 	}
 
+	mainTree.clear();
+
 	var viewPort = {
 		x: -world.x,
 		y: world.y,
 		width: CANVAS_WIDTH,
 		height: CANVAS_HEIGHT
 	}
+
+	mainTree.bounds = viewPort;
+
+	mainTree.insert(player);
+
+	for (var i = walls.length - 1; i >= 0; i--) {
+		if(checkAABB(walls[i], viewPort)){
+			mainTree.insert(walls[i]);
+		}
+	}
+
+	for (var i = creatures.length - 1; i >= 0; i--) {
+		if(checkAABB(creatures[i], viewPort)){
+			creatures[i].AI();
+			creatures[i].step();
+			if(creatures[i].alive){
+				mainTree.insert(creatures[i]);
+			}
+		}
+	}
+
+	creatures = creatures.filter(function(creature) {
+		return creature.alive;
+	});
 
 	for (var i = projectiles.length - 1; i >= 0; i--) {
 		projectiles[i].step();
@@ -67,17 +100,6 @@ function step() {
 
 	projectiles = projectiles.filter(function(projectile) {
 		return projectile.alive;
-	});
-
-	for (var i = creatures.length - 1; i >= 0; i--) {
-		if(checkAABB(creatures[i], viewPort)){
-			creatures[i].AI();
-			creatures[i].step();
-		}
-	}
-
-	creatures = creatures.filter(function(creature) {
-		return creature.alive;
 	});
 
 	hud.step();

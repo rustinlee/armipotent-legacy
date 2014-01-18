@@ -48,27 +48,27 @@ function Projectile(x, y, xv, yv, sprite, damage, friendly, penetrating, ttl) {
 			this.alive = false;
 		}
 
-		if(!this.penetrating){
-			for (var i = walls.length - 1; i >= 0; i--) {
-				if(checkAABB(this,walls[i])){
-					this.alive = false;
-				}
-			}
-		}
+		var elementsToTest = mainTree.retrieve(this);
 
-		if(this.friendly) {
-			for (var i = creatures.length - 1; i >= 0; i--) {
-				if(ndgmr.checkPixelCollision(this.sprite,creatures[i].sprite.children[0])){
-					creatures[i].HP -= this.damage;
+		for (var i = elementsToTest.length - 1; i >= 0; i--) {
+			if(elementsToTest[i] instanceof Wall && !this.penetrating){
+				for (var j = elementsToTest[i].sprite.children.length - 1; j >= 0; j--) {
+					if(ndgmr.checkPixelCollision(this.sprite,elementsToTest[i].sprite.children[j])){
+						this.alive = false;
+					}
+				}
+			} else if(elementsToTest[i] instanceof Creature && !(elementsToTest[i] instanceof PlayerClass) &&this.friendly){
+				if(ndgmr.checkPixelCollision(this.sprite,elementsToTest[i].sprite.children[0])){
+					elementsToTest[i].HP -= this.damage;
 					if(!this.penetrating) {
 						this.alive = false;
 					}
 				}
-			}
-		} else {
-			if(ndgmr.checkPixelCollision(this.sprite,player.sprite.children[0])){
-				player.HP -= this.damage;
-				this.alive = false;
+			} else if(elementsToTest[i] instanceof PlayerClass && !this.friendly){
+				if(ndgmr.checkPixelCollision(this.sprite,elementsToTest[i].sprite.children[0])){
+					elementsToTest[i].HP -= this.damage;
+					this.alive = false;
+				}
 			}
 		}
 	};
